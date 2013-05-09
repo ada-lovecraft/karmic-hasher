@@ -1,0 +1,50 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'node-thumbnail' ]
+2 info using npm@1.2.18
+3 info using node@v0.10.5
+4 verbose read json /Users/jdowell/psites/album-grabber/package.json
+5 warn package.json application-name@0.0.1 No README.md file found!
+6 verbose read json /Users/jdowell/psites/album-grabber/node_modules/couchbase/package.json
+7 verbose read json /Users/jdowell/psites/album-grabber/node_modules/express/package.json
+8 verbose read json /Users/jdowell/psites/album-grabber/node_modules/jade/package.json
+9 verbose read json /Users/jdowell/psites/album-grabber/node_modules/node-phash/package.json
+10 verbose from cache /Users/jdowell/psites/album-grabber/package.json
+11 verbose readDependencies using package.json deps
+12 verbose cache add [ 'node-thumbnail', null ]
+13 verbose cache add name=undefined spec="node-thumbnail" args=["node-thumbnail",null]
+14 verbose parsed url { protocol: null,
+14 verbose parsed url   slashes: null,
+14 verbose parsed url   auth: null,
+14 verbose parsed url   host: null,
+14 verbose parsed url   port: null,
+14 verbose parsed url   hostname: null,
+14 verbose parsed url   hash: null,
+14 verbose parsed url   search: null,
+14 verbose parsed url   query: null,
+14 verbose parsed url   pathname: 'node-thumbnail',
+14 verbose parsed url   path: 'node-thumbnail',
+14 verbose parsed url   href: 'node-thumbnail' }
+15 silly lockFile 0ba67cb5-node-thumbnail node-thumbnail
+16 verbose lock node-thumbnail /Users/jdowell/.npm/0ba67cb5-node-thumbnail.lock
+17 silly lockFile 0ba67cb5-node-thumbnail node-thumbnail
+18 verbose addNamed [ 'node-thumbnail', '' ]
+19 verbose addNamed [ null, '' ]
+20 silly lockFile f4cbef61-node-thumbnail node-thumbnail@
+21 verbose lock node-thumbnail@ /Users/jdowell/.npm/f4cbef61-node-thumbnail.lock
+22 silly lockFile f4cbef61-node-thumbnail node-thumbnail@
+23 error Error: EACCES, open '/Users/jdowell/.npm/f4cbef61-node-thumbnail.lock'
+23 error  { [Error: EACCES, open '/Users/jdowell/.npm/f4cbef61-node-thumbnail.lock']
+23 error   errno: 3,
+23 error   code: 'EACCES',
+23 error   path: '/Users/jdowell/.npm/f4cbef61-node-thumbnail.lock' }
+24 error Please try running this command again as root/Administrator.
+25 error System Darwin 12.3.0
+26 error command "node" "/usr/local/bin/npm" "install" "node-thumbnail"
+27 error cwd /Users/jdowell/psites/album-grabber
+28 error node -v v0.10.5
+29 error npm -v 1.2.18
+30 error path /Users/jdowell/.npm/f4cbef61-node-thumbnail.lock
+31 error code EACCES
+32 error errno 3
+33 error stack Error: EACCES, open '/Users/jdowell/.npm/f4cbef61-node-thumbnail.lock'
+34 verbose exit [ 3, true ]
