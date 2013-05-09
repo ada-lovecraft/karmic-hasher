@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+	if (albumName)
+		p saved #{numImages} into album #{albumName}
+	if (message)
+		p= message
+	form(method="POST")
+		input(name="subreddit",placeholder="album URL")
+		input(type="submit")
