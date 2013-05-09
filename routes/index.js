@@ -4,6 +4,6 @@
  */
 
 exports.index = function(req, res){	
-	  res.render('index', { title: 'album grabber' , albumName: null, message: null });
+	  res.render('index', { title: 'album grabber' , images: null, message: null });
 }
 
