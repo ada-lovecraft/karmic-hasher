@@ -9,6 +9,6 @@
     "express": "3.1.2",
     "jade": "*",
     "couchbase":"*",
-    "node-thumb":"*"
+    "node-thumbnail":"*"
   }
 }
