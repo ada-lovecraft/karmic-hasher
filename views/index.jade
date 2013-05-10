@@ -3,11 +3,18 @@ extends layout
 block content
 	h1= title
 	p Welcome to #{title}
-	if (message)
-		p= message
+	div#controls
+		p
+			img#portrait
+		p
+			div#relevanceLabel Mostly The Same
+			input#relevance(type='range', min='0', max='12', step='3', value='3')
+		div#message
 	form(method="POST")
 		input(name="subreddit",placeholder="album URL")
 		input(type="submit")
 	if images
 		each image in images
-			img.cat-thumb(src="/thumbs/" + subreddit + '/' + image.link , data-hash=image.hash, data-score=image.score)
+			img.karmic-thumb(src="/thumbs/" + subreddit + '/' + image.link ,data-file=image.link, data-hash=image.hash, data-score=image.score)
+	script(type="text/javascript")
+		var subreddit = '#{subreddit}'
