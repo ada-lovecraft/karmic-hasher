@@ -9,6 +9,7 @@
     "express": "3.1.2",
     "jade": "*",
     "couchbase":"*",
-    "node-thumbnail":"*"
+    "node-thumbnail":"*",
+    "phash":"0.0.2"
   }
 }
