@@ -3,15 +3,15 @@ $(document).ready(function() {
 	console.log(subreddit);
 
 	$('.karmic-thumb').click(function(e) {
-		$('#relevance').val(21);
-		$('#relevanceLabel').html(21);
+		$('#relevance').val(23);
+		$('#relevanceLabel').html('Relevance Factor: 23');
 		$('#controls').show();
 		var karmicHash = $(this).data('hash');
 		var karmicFile = $(this).data('file');
 		$('#portrait').attr('src','/images/' + subreddit + '/' + karmicFile);
 		$('#portrait').data('hash',karmicHash);
 		$('.karmic-thumb').hide();
-		$.ajax('/matches/' + subreddit + '/' + karmicHash + '/' + 21)
+		$.ajax('/matches/' + subreddit + '/' + karmicHash + '/' + 23)
 			.done(function(data) {
 				$('.karmic-thumb').removeClass('featured');
 				if (data.length > 0) {
@@ -48,6 +48,6 @@ $(document).ready(function() {
 	$('#relevance').change(function(e) {
 		var relevance = $(this).val();
 		console.log(relevance);
-		$('#relevanceLabel').html(relevance);
+		$('#relevanceLabel').html('Relevance Factor: ' + relevance);
 	});
 });

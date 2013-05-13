@@ -8,13 +8,12 @@ block content
 			img#portrait
 		p
 			div#relevanceLabel Mostly The Same
-			input#relevance(type='range', min='0', max='50',value='25')
+			input#relevance(type='range', min='15', max='30',value='23')
 		div#message
-	form(method="POST")
-		input(name="subreddit",placeholder="album URL")
-		input(type="submit")
 	if images
 		each image in images
 			img.karmic-thumb(src="/thumbs/" + subreddit + '/' + image.link ,data-file=image.link, data-hash=image.hash, data-score=image.score)
+	else
+		div#message= message
 	script(type="text/javascript")
 		var subreddit = '#{subreddit}'
