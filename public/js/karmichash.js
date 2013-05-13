@@ -3,15 +3,15 @@ $(document).ready(function() {
 	console.log(subreddit);
 
 	$('.karmic-thumb').click(function(e) {
-		$('#relevance').val(3);
-		$('#relevanceLabel').html("Mostly the Same");
+		$('#relevance').val(21);
+		$('#relevanceLabel').html(21);
 		$('#controls').show();
 		var karmicHash = $(this).data('hash');
 		var karmicFile = $(this).data('file');
 		$('#portrait').attr('src','/images/' + subreddit + '/' + karmicFile);
 		$('#portrait').data('hash',karmicHash);
 		$('.karmic-thumb').hide();
-		$.ajax('/matches/' + subreddit + '/' + karmicHash + '/' + 3)
+		$.ajax('/matches/' + subreddit + '/' + karmicHash + '/' + 21)
 			.done(function(data) {
 				$('.karmic-thumb').removeClass('featured');
 				if (data.length > 0) {

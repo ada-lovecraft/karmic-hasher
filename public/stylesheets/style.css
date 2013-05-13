@@ -14,7 +14,13 @@ a {
 	border: 1px solid #333;
 	cursor: pointer;
 	width: 120px;
+	-webkit-filter: grayscale(1);
 }
+
+.karmic-thumb:hover {
+	-webkit-filter: grayscale(0);	
+}
+
 #controls {
 	width: 420px;
 	padding: 10px;
