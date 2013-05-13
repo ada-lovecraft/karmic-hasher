@@ -1,50 +1,479 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'node-thumbnail' ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
 2 info using npm@1.2.18
 3 info using node@v0.10.5
-4 verbose read json /Users/jdowell/psites/album-grabber/package.json
+4 verbose read json /Users/jeremy/Sites/album-grabber/package.json
 5 warn package.json application-name@0.0.1 No README.md file found!
-6 verbose read json /Users/jdowell/psites/album-grabber/node_modules/couchbase/package.json
-7 verbose read json /Users/jdowell/psites/album-grabber/node_modules/express/package.json
-8 verbose read json /Users/jdowell/psites/album-grabber/node_modules/jade/package.json
-9 verbose read json /Users/jdowell/psites/album-grabber/node_modules/node-phash/package.json
-10 verbose from cache /Users/jdowell/psites/album-grabber/package.json
-11 verbose readDependencies using package.json deps
-12 verbose cache add [ 'node-thumbnail', null ]
-13 verbose cache add name=undefined spec="node-thumbnail" args=["node-thumbnail",null]
-14 verbose parsed url { protocol: null,
-14 verbose parsed url   slashes: null,
-14 verbose parsed url   auth: null,
-14 verbose parsed url   host: null,
-14 verbose parsed url   port: null,
-14 verbose parsed url   hostname: null,
-14 verbose parsed url   hash: null,
-14 verbose parsed url   search: null,
-14 verbose parsed url   query: null,
-14 verbose parsed url   pathname: 'node-thumbnail',
-14 verbose parsed url   path: 'node-thumbnail',
-14 verbose parsed url   href: 'node-thumbnail' }
-15 silly lockFile 0ba67cb5-node-thumbnail node-thumbnail
-16 verbose lock node-thumbnail /Users/jdowell/.npm/0ba67cb5-node-thumbnail.lock
-17 silly lockFile 0ba67cb5-node-thumbnail node-thumbnail
-18 verbose addNamed [ 'node-thumbnail', '' ]
-19 verbose addNamed [ null, '' ]
-20 silly lockFile f4cbef61-node-thumbnail node-thumbnail@
-21 verbose lock node-thumbnail@ /Users/jdowell/.npm/f4cbef61-node-thumbnail.lock
-22 silly lockFile f4cbef61-node-thumbnail node-thumbnail@
-23 error Error: EACCES, open '/Users/jdowell/.npm/f4cbef61-node-thumbnail.lock'
-23 error  { [Error: EACCES, open '/Users/jdowell/.npm/f4cbef61-node-thumbnail.lock']
-23 error   errno: 3,
-23 error   code: 'EACCES',
-23 error   path: '/Users/jdowell/.npm/f4cbef61-node-thumbnail.lock' }
-24 error Please try running this command again as root/Administrator.
-25 error System Darwin 12.3.0
-26 error command "node" "/usr/local/bin/npm" "install" "node-thumbnail"
-27 error cwd /Users/jdowell/psites/album-grabber
-28 error node -v v0.10.5
-29 error npm -v 1.2.18
-30 error path /Users/jdowell/.npm/f4cbef61-node-thumbnail.lock
-31 error code EACCES
-32 error errno 3
-33 error stack Error: EACCES, open '/Users/jdowell/.npm/f4cbef61-node-thumbnail.lock'
-34 verbose exit [ 3, true ]
+6 verbose readDependencies using package.json deps
+7 verbose install where, deps [ '/Users/jeremy/Sites/album-grabber',
+7 verbose install   [ 'express', 'jade', 'couchbase', 'node-thumbnail', 'phash' ] ]
+8 verbose from cache /Users/jeremy/Sites/album-grabber/package.json
+9 info preinstall application-name@0.0.1
+10 verbose read json /Users/jeremy/Sites/album-grabber/node_modules/express/package.json
+11 verbose read json /Users/jeremy/Sites/album-grabber/node_modules/jade/package.json
+12 verbose read json /Users/jeremy/Sites/album-grabber/node_modules/node-thumbnail/package.json
+13 verbose from cache /Users/jeremy/Sites/album-grabber/package.json
+14 verbose readDependencies using package.json deps
+15 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/express/package.json
+16 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/jade/package.json
+17 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/node-thumbnail/package.json
+18 verbose already installed skipping node-thumbnail@* /Users/jeremy/Sites/album-grabber
+19 verbose cache add [ 'couchbase@*', null ]
+20 verbose cache add name=undefined spec="couchbase@*" args=["couchbase@*",null]
+21 verbose parsed url { protocol: null,
+21 verbose parsed url   slashes: null,
+21 verbose parsed url   auth: null,
+21 verbose parsed url   host: null,
+21 verbose parsed url   port: null,
+21 verbose parsed url   hostname: null,
+21 verbose parsed url   hash: null,
+21 verbose parsed url   search: null,
+21 verbose parsed url   query: null,
+21 verbose parsed url   pathname: 'couchbase@*',
+21 verbose parsed url   path: 'couchbase@*',
+21 verbose parsed url   href: 'couchbase@*' }
+22 verbose cache add name="couchbase" spec="*" args=["couchbase","*"]
+23 verbose parsed url { protocol: null,
+23 verbose parsed url   slashes: null,
+23 verbose parsed url   auth: null,
+23 verbose parsed url   host: null,
+23 verbose parsed url   port: null,
+23 verbose parsed url   hostname: null,
+23 verbose parsed url   hash: null,
+23 verbose parsed url   search: null,
+23 verbose parsed url   query: null,
+23 verbose parsed url   pathname: '*',
+23 verbose parsed url   path: '*',
+23 verbose parsed url   href: '*' }
+24 verbose addNamed [ 'couchbase', '*' ]
+25 verbose addNamed [ null, '' ]
+26 verbose cache add [ 'phash@0.0.2', null ]
+27 verbose cache add name=undefined spec="phash@0.0.2" args=["phash@0.0.2",null]
+28 verbose parsed url { protocol: null,
+28 verbose parsed url   slashes: null,
+28 verbose parsed url   auth: null,
+28 verbose parsed url   host: null,
+28 verbose parsed url   port: null,
+28 verbose parsed url   hostname: null,
+28 verbose parsed url   hash: null,
+28 verbose parsed url   search: null,
+28 verbose parsed url   query: null,
+28 verbose parsed url   pathname: 'phash@0.0.2',
+28 verbose parsed url   path: 'phash@0.0.2',
+28 verbose parsed url   href: 'phash@0.0.2' }
+29 verbose cache add name="phash" spec="0.0.2" args=["phash","0.0.2"]
+30 verbose parsed url { protocol: null,
+30 verbose parsed url   slashes: null,
+30 verbose parsed url   auth: null,
+30 verbose parsed url   host: null,
+30 verbose parsed url   port: null,
+30 verbose parsed url   hostname: null,
+30 verbose parsed url   hash: null,
+30 verbose parsed url   search: null,
+30 verbose parsed url   query: null,
+30 verbose parsed url   pathname: '0.0.2',
+30 verbose parsed url   path: '0.0.2',
+30 verbose parsed url   href: '0.0.2' }
+31 verbose addNamed [ 'phash', '0.0.2' ]
+32 verbose addNamed [ '0.0.2', '0.0.2' ]
+33 verbose already installed skipping express@3.1.2 /Users/jeremy/Sites/album-grabber
+34 verbose already installed skipping jade@* /Users/jeremy/Sites/album-grabber
+35 silly lockFile 103aba81-couchbase couchbase@*
+36 verbose lock couchbase@* /Users/jeremy/.npm/103aba81-couchbase.lock
+37 silly lockFile 12c71d8f-phash-0-0-2 phash@0.0.2
+38 verbose lock phash@0.0.2 /Users/jeremy/.npm/12c71d8f-phash-0-0-2.lock
+39 silly addNameRange { name: 'couchbase', range: '', hasData: false }
+40 verbose url raw couchbase
+41 verbose url resolving [ 'https://registry.npmjs.org/', './couchbase' ]
+42 verbose url resolved https://registry.npmjs.org/couchbase
+43 info trying registry request attempt 1 at 20:34:59
+44 verbose etag "288ZSGV7NE5LU62HAUP91FQBZ"
+45 http GET https://registry.npmjs.org/couchbase
+46 verbose url raw phash/0.0.2
+47 verbose url resolving [ 'https://registry.npmjs.org/', './phash/0.0.2' ]
+48 verbose url resolved https://registry.npmjs.org/phash/0.0.2
+49 info trying registry request attempt 1 at 20:34:59
+50 verbose etag "1MSSE1Z253A0VA9ED0D5M10FG"
+51 http GET https://registry.npmjs.org/phash/0.0.2
+52 http 304 https://registry.npmjs.org/couchbase
+53 silly registry.get cb [ 304,
+53 silly registry.get   { server: 'CouchDB/1.3.0 (Erlang OTP/R15B03)',
+53 silly registry.get     etag: '"288ZSGV7NE5LU62HAUP91FQBZ"',
+53 silly registry.get     date: 'Sat, 11 May 2013 01:35:00 GMT',
+53 silly registry.get     'content-length': '0' } ]
+54 verbose etag couchbase from cache
+55 http 304 https://registry.npmjs.org/phash/0.0.2
+56 silly registry.get cb [ 304,
+56 silly registry.get   { server: 'CouchDB/1.3.0 (Erlang OTP/R15B03)',
+56 silly registry.get     etag: '"1MSSE1Z253A0VA9ED0D5M10FG"',
+56 silly registry.get     date: 'Sat, 11 May 2013 01:35:00 GMT',
+56 silly registry.get     'content-length': '0' } ]
+57 verbose etag phash/0.0.2 from cache
+58 silly addNameRange number 2 { name: 'couchbase', range: '', hasData: true }
+59 silly addNameRange versions [ 'couchbase',
+59 silly addNameRange   [ '0.0.1',
+59 silly addNameRange     '0.0.3',
+59 silly addNameRange     '0.0.4',
+59 silly addNameRange     '0.0.5',
+59 silly addNameRange     '0.0.6',
+59 silly addNameRange     '0.0.7',
+59 silly addNameRange     '0.0.8',
+59 silly addNameRange     '0.0.9',
+59 silly addNameRange     '0.0.10',
+59 silly addNameRange     '0.0.11',
+59 silly addNameRange     '0.0.12-beta',
+59 silly addNameRange     '0.0.12' ] ]
+60 verbose addNamed [ 'couchbase', '0.0.12' ]
+61 verbose addNamed [ '0.0.12', '0.0.12' ]
+62 silly lockFile 9815a397-couchbase-0-0-12 couchbase@0.0.12
+63 verbose lock couchbase@0.0.12 /Users/jeremy/.npm/9815a397-couchbase-0-0-12.lock
+64 verbose read json /Users/jeremy/.npm/couchbase/0.0.12/package/package.json
+65 verbose read json /Users/jeremy/.npm/phash/0.0.2/package/package.json
+66 silly lockFile 9815a397-couchbase-0-0-12 couchbase@0.0.12
+67 silly lockFile 9815a397-couchbase-0-0-12 couchbase@0.0.12
+68 silly lockFile 103aba81-couchbase couchbase@*
+69 silly lockFile 103aba81-couchbase couchbase@*
+70 silly lockFile 12c71d8f-phash-0-0-2 phash@0.0.2
+71 silly lockFile 12c71d8f-phash-0-0-2 phash@0.0.2
+72 silly resolved [ { bugs:
+72 silly resolved      { url: 'http://www.couchbase.com/issues/browse/JSCBC',
+72 silly resolved        email: 'support@couchbase.com' },
+72 silly resolved     description: 'The official (currently under development) node.js Client Library. Built atop libcouchbase, it aligns the libuv event model of node.js with it\'s own asynchronous API to allow for native-node feeling high performance development.',
+72 silly resolved     engines: { node: '>=0.8.8' },
+72 silly resolved     homepage: 'http://www.couchbase.com/develop',
+72 silly resolved     keywords:
+72 silly resolved      [ 'couchbase',
+72 silly resolved        'libcouchbase',
+72 silly resolved        'memcached',
+72 silly resolved        'nosql',
+72 silly resolved        'json',
+72 silly resolved        'document' ],
+72 silly resolved     main: './lib/couchbase',
+72 silly resolved     license: 'Apache2',
+72 silly resolved     name: 'couchbase',
+72 silly resolved     dependencies: { bindings: '~1.0.0' },
+72 silly resolved     repository:
+72 silly resolved      { type: 'git',
+72 silly resolved        url: 'http://github.com/couchbase/couchnode.git' },
+72 silly resolved     version: '0.0.12',
+72 silly resolved     gypfile: true,
+72 silly resolved     scripts: { install: 'node-gyp rebuild' },
+72 silly resolved     contributors:
+72 silly resolved      [ [Object],
+72 silly resolved        [Object],
+72 silly resolved        [Object],
+72 silly resolved        [Object],
+72 silly resolved        [Object],
+72 silly resolved        [Object],
+72 silly resolved        [Object],
+72 silly resolved        [Object],
+72 silly resolved        [Object],
+72 silly resolved        [Object],
+72 silly resolved        [Object] ],
+72 silly resolved     readme: 'couchnode - node.js access to libcouchbase\n==========================================\n\nThis library allows you to connect to a Couchbase cluster from node.js\n\nBasic installation and usage\n--------------------\n\nTo install this module, we\'ll assume you are using\n[NPM](https://npmjs.org).  However it is not as simple as a regular\nJavaScript module, as it depends on the C-library for Couchbase\nclients, [libcouchbase](https://github.com/couchbase/libcouchbase).\nLibcouchbase also powers other dynamic language clients, such as Ruby\nand PHP, so if you\'ve worked with those clients you should feel right\nat home.\n\nFirst step is to install libcouchbase (the 2.0 version). On a Mac with\nhomebrew this should be as easy as running:\n\n    brew install libcouchbase\n\nOnce you have libcouchbase installed, you can proceed to install the\n`couchbase` module by running:\n\n    npm install couchbase\n\nDo note that this module requires the very latest version of\nlibcouchbase, so if you see errors like `error: ‘struct lcb_io_opt_st’\nhas no member named ‘v’`, you may have to install libcouchbase from\nsource until we cut another release.\n\n\nAPI description\n---------------\n\nFor API illustration, the best bet at the current time is [a small\nexample http hit\ncounter](https://github.com/couchbase/couchnode/tree/master/example.js). There\nis also [the test suite which shows more\ndetails.](https://github.com/couchbase/couchnode/tree/master/tests)\n\n    get:       cb.get(testkey, function (err, doc, meta) {})\n    set:       cb.set(testkey, "bar", function (err, meta) {})\n    replace:   cb.replace(testkey, "bar", function(err, meta) {})\n    delete:    cb.delete(testkey, function (err, meta) {})\n    multiget:  cb.get([\'key1\', \'key2\', \'...\'], function(err, doc, meta) {})\n\nContributing changes\n--------------------\n\nSee CONTRIBUTING.md\n\nInstall description\n-------------------\n\nYou would need to have libcouchbase installed _before_ you can build\nthe node extension. If you have installed libcouchbase in a location\nthat isn\'t part of the default search path for your compiler, linker\nand runtime linker, you have to set the appropriate flags. ex:\n\n    EXTRA_CPPFLAGS="-I/opt/local/include"\n    EXTRA_LDFLAGS="-L/opt/local/lib -Wl,-rpath,/opt/local/lib"\n',
+72 silly resolved     readmeFilename: 'README.md',
+72 silly resolved     _id: 'couchbase@0.0.12',
+72 silly resolved     _from: 'couchbase@*' },
+72 silly resolved   { name: 'phash',
+72 silly resolved     version: '0.0.2',
+72 silly resolved     description: 'Bindings for node.js to pHash',
+72 silly resolved     main: 'index',
+72 silly resolved     repository:
+72 silly resolved      { type: 'git',
+72 silly resolved        url: 'https://github.com/aaronm67/node-phash.git' },
+72 silly resolved     devDependencies: { 'node-gyp': '*' },
+72 silly resolved     engines: { node: '>=0.8.0' },
+72 silly resolved     script:
+72 silly resolved      { preinstall: 'node-gyp configure build',
+72 silly resolved        preuninstall: 'rm -rf build/*' },
+72 silly resolved     keywords: [ 'pHash', 'phash', 'libpHash', 'native', 'binding', 'addon' ],
+72 silly resolved     author: { name: 'Aaron Marasco', email: 'agm257@mail.missouri.edu' },
+72 silly resolved     contributors: [ [Object], [Object], [Object] ],
+72 silly resolved     scripts: { install: 'node-gyp rebuild' },
+72 silly resolved     gypfile: true,
+72 silly resolved     readme: '# node-phash\n\n  [pHash](http://www.phash.org/) bindings for node.js.\n  \n  Current version supports only image hashing. (no video & audio hashing)\n\n## Installation\n\nInstall [CImg](http://cimg.sourceforge.net/), [pHash](http://www.phash.org/), [ImageMagicK](http://www.imagemagick.org/) packages first.\n\n    $ npm install phash\n\n## Example\n```js\nvar pHash = require("phash");\n\nvar hashA = pHash.getImageHash("a.jpg");\nvar hashB = pHash.getImageHash("b.png");\nvar hashC = pHash.getImageHash("c.png");\n\nvar hammingAB = pHash.hammingDistance(hashA,hashB);\nvar hammingAC = pHash.hammingDistance(hashA,hashC);\n\nconsole.log("HashA: " + hashA);\nconsole.log("HashB: " + hashB);\nconsole.log("HashC: " + hashC);\n\nconsole.log("Hamming Distance A -> B: " + hammingAB);\nconsole.log("Hamming Distance A -> C: " + hammingAC);\n```\n',
+72 silly resolved     readmeFilename: 'README.md',
+72 silly resolved     _id: 'phash@0.0.2',
+72 silly resolved     _from: 'phash@0.0.2' } ]
+73 info install couchbase@0.0.12 into /Users/jeremy/Sites/album-grabber
+74 info install phash@0.0.2 into /Users/jeremy/Sites/album-grabber
+75 info installOne couchbase@0.0.12
+76 info installOne phash@0.0.2
+77 verbose from cache /Users/jeremy/.npm/couchbase/0.0.12/package/package.json
+78 info /Users/jeremy/Sites/album-grabber/node_modules/couchbase unbuild
+79 verbose read json /Users/jeremy/Sites/album-grabber/node_modules/couchbase/package.json
+80 verbose from cache /Users/jeremy/.npm/phash/0.0.2/package/package.json
+81 info /Users/jeremy/Sites/album-grabber/node_modules/phash unbuild
+82 verbose read json /Users/jeremy/Sites/album-grabber/node_modules/phash/package.json
+83 verbose tar unpack /Users/jeremy/.npm/couchbase/0.0.12/package.tgz
+84 silly lockFile a523dac2-m-grabber-node-modules-couchbase /Users/jeremy/Sites/album-grabber/node_modules/couchbase
+85 verbose lock /Users/jeremy/Sites/album-grabber/node_modules/couchbase /Users/jeremy/.npm/a523dac2-m-grabber-node-modules-couchbase.lock
+86 silly lockFile eaf52777-npm-couchbase-0-0-12-package-tgz /Users/jeremy/.npm/couchbase/0.0.12/package.tgz
+87 verbose lock /Users/jeremy/.npm/couchbase/0.0.12/package.tgz /Users/jeremy/.npm/eaf52777-npm-couchbase-0-0-12-package-tgz.lock
+88 verbose tar unpack /Users/jeremy/.npm/phash/0.0.2/package.tgz
+89 silly lockFile 4adb8fbe-album-grabber-node-modules-phash /Users/jeremy/Sites/album-grabber/node_modules/phash
+90 verbose lock /Users/jeremy/Sites/album-grabber/node_modules/phash /Users/jeremy/.npm/4adb8fbe-album-grabber-node-modules-phash.lock
+91 silly lockFile 192103c1-remy-npm-phash-0-0-2-package-tgz /Users/jeremy/.npm/phash/0.0.2/package.tgz
+92 verbose lock /Users/jeremy/.npm/phash/0.0.2/package.tgz /Users/jeremy/.npm/192103c1-remy-npm-phash-0-0-2-package-tgz.lock
+93 silly gunzTarPerm modes [ '755', '644' ]
+94 silly gunzTarPerm modes [ '755', '644' ]
+95 silly gunzTarPerm extractEntry package.json
+96 silly gunzTarPerm extractEntry .npmignore
+97 silly gunzTarPerm extractEntry README.md
+98 silly gunzTarPerm extractEntry LICENSE
+99 silly gunzTarPerm extractEntry example.js
+100 silly gunzTarPerm extractEntry package.json
+101 silly gunzTarPerm extractEntry AUTHORS
+102 silly gunzTarPerm extractEntry tests/README.md
+103 silly gunzTarPerm extractEntry .npmignore
+104 silly gunzTarPerm extractEntry README.md
+105 silly gunzTarPerm extractEntry LICENSE
+106 silly gunzTarPerm extractEntry index.js
+107 silly gunzTarPerm extractEntry tests/07-shutdown.js
+108 silly gunzTarPerm extractEntry tests/08-designdoc.js
+109 silly gunzTarPerm extractEntry binding.gyp
+110 silly gunzTarPerm extractEntry examples/test.js
+111 silly gunzTarPerm extractEntry examples/a.jpg
+112 silly gunzTarPerm extractEntry examples/b.png
+113 silly gunzTarPerm extractEntry tests/08-views.js
+114 silly gunzTarPerm extractEntry tests/06-add.js
+115 silly gunzTarPerm extractEntry examples/c.png
+116 silly gunzTarPerm extractEntry tests/01-set-big.js
+117 silly gunzTarPerm extractEntry tests/11-jscbc-4.js
+118 silly gunzTarPerm extractEntry examples/d.jpg
+119 silly gunzTarPerm extractEntry lib/index.js
+120 silly gunzTarPerm extractEntry tests/12-observe.js
+121 silly gunzTarPerm extractEntry tests/13-endure.js
+122 silly gunzTarPerm extractEntry phash.cpp
+123 silly gunzTarPerm extractEntry tests/14-prepend-append.js
+124 silly gunzTarPerm extractEntry tests/05-replace.js
+125 silly gunzTarPerm extractEntry tests/15-hashkey.js
+126 silly gunzTarPerm extractEntry tests/04-remove.js
+127 silly gunzTarPerm extractEntry tests/16-JSCBC-14.js
+128 silly gunzTarPerm extractEntry tests/03-multiget.js
+129 silly gunzTarPerm extractEntry tests/17-locks.js
+130 silly gunzTarPerm extractEntry tests/02-get.js
+131 silly gunzTarPerm extractEntry tests/00-args.t.js
+132 silly gunzTarPerm extractEntry tests/01-set.js
+133 silly gunzTarPerm extractEntry tests/setup.js
+134 silly gunzTarPerm extractEntry tests/09-incr-decr.js
+135 silly gunzTarPerm extractEntry tests/10-strerror.js
+136 silly gunzTarPerm extractEntry tests/runtests.sh
+137 silly gunzTarPerm extractEntry tests/config.json.sample
+138 silly gunzTarPerm extractEntry tests/start_mock.sh
+139 silly gunzTarPerm extractEntry lib/bucket.js
+140 silly gunzTarPerm extractEntry lib/couchbase.js
+141 silly gunzTarPerm extractEntry CONTRIBUTING.md
+142 silly gunzTarPerm extractEntry src/ioplugin_internal.h
+143 silly gunzTarPerm extractEntry src/cas.cc
+144 silly gunzTarPerm extractEntry src/cookie.h
+145 silly gunzTarPerm extractEntry src/couchbase_impl.cc
+146 silly gunzTarPerm extractEntry src/couchbase_impl.h
+147 silly gunzTarPerm extractEntry src/ioplugin.cc
+148 silly gunzTarPerm extractEntry src/ioplugin.h
+149 silly gunzTarPerm extractEntry src/cas.h
+150 silly gunzTarPerm extractEntry src/logger.h
+151 silly gunzTarPerm extractEntry src/namemap.cc
+152 silly gunzTarPerm extractEntry src/namemap.h
+153 verbose read json /Users/jeremy/Sites/album-grabber/node_modules/phash/package.json
+154 silly lockFile 4adb8fbe-album-grabber-node-modules-phash /Users/jeremy/Sites/album-grabber/node_modules/phash
+155 silly lockFile 4adb8fbe-album-grabber-node-modules-phash /Users/jeremy/Sites/album-grabber/node_modules/phash
+156 silly lockFile 192103c1-remy-npm-phash-0-0-2-package-tgz /Users/jeremy/.npm/phash/0.0.2/package.tgz
+157 silly lockFile 192103c1-remy-npm-phash-0-0-2-package-tgz /Users/jeremy/.npm/phash/0.0.2/package.tgz
+158 silly gunzTarPerm extractEntry src/notify.cc
+159 silly gunzTarPerm extractEntry src/operations.cc
+160 info preinstall phash@0.0.2
+161 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/phash/package.json
+162 verbose readDependencies using package.json deps
+163 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/phash/package.json
+164 verbose readDependencies using package.json deps
+165 silly resolved []
+166 verbose about to build /Users/jeremy/Sites/album-grabber/node_modules/phash
+167 info build /Users/jeremy/Sites/album-grabber/node_modules/phash
+168 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/phash/package.json
+169 verbose linkStuff [ false,
+169 verbose linkStuff   false,
+169 verbose linkStuff   false,
+169 verbose linkStuff   '/Users/jeremy/Sites/album-grabber/node_modules' ]
+170 info linkStuff phash@0.0.2
+171 verbose linkBins phash@0.0.2
+172 verbose linkMans phash@0.0.2
+173 verbose rebuildBundles phash@0.0.2
+174 info install phash@0.0.2
+175 verbose unsafe-perm in lifecycle true
+176 silly exec sh "-c" "node-gyp rebuild"
+177 silly sh,-c,node-gyp rebuild,/Users/jeremy/Sites/album-grabber/node_modules/phash spawning
+178 silly gunzTarPerm extractEntry src/operations.h
+179 silly gunzTarPerm extractEntry binding.gyp
+180 verbose read json /Users/jeremy/Sites/album-grabber/node_modules/couchbase/package.json
+181 silly lockFile a523dac2-m-grabber-node-modules-couchbase /Users/jeremy/Sites/album-grabber/node_modules/couchbase
+182 silly lockFile a523dac2-m-grabber-node-modules-couchbase /Users/jeremy/Sites/album-grabber/node_modules/couchbase
+183 silly lockFile eaf52777-npm-couchbase-0-0-12-package-tgz /Users/jeremy/.npm/couchbase/0.0.12/package.tgz
+184 silly lockFile eaf52777-npm-couchbase-0-0-12-package-tgz /Users/jeremy/.npm/couchbase/0.0.12/package.tgz
+185 info preinstall couchbase@0.0.12
+186 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/couchbase/package.json
+187 verbose readDependencies using package.json deps
+188 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/couchbase/package.json
+189 verbose readDependencies using package.json deps
+190 verbose cache add [ 'bindings@~1.0.0', null ]
+191 verbose cache add name=undefined spec="bindings@~1.0.0" args=["bindings@~1.0.0",null]
+192 verbose parsed url { protocol: null,
+192 verbose parsed url   slashes: null,
+192 verbose parsed url   auth: null,
+192 verbose parsed url   host: null,
+192 verbose parsed url   port: null,
+192 verbose parsed url   hostname: null,
+192 verbose parsed url   hash: null,
+192 verbose parsed url   search: null,
+192 verbose parsed url   query: null,
+192 verbose parsed url   pathname: 'bindings@~1.0.0',
+192 verbose parsed url   path: 'bindings@~1.0.0',
+192 verbose parsed url   href: 'bindings@~1.0.0' }
+193 verbose cache add name="bindings" spec="~1.0.0" args=["bindings","~1.0.0"]
+194 verbose parsed url { protocol: null,
+194 verbose parsed url   slashes: null,
+194 verbose parsed url   auth: null,
+194 verbose parsed url   host: null,
+194 verbose parsed url   port: null,
+194 verbose parsed url   hostname: null,
+194 verbose parsed url   hash: null,
+194 verbose parsed url   search: null,
+194 verbose parsed url   query: null,
+194 verbose parsed url   pathname: '~1.0.0',
+194 verbose parsed url   path: '~1.0.0',
+194 verbose parsed url   href: '~1.0.0' }
+195 verbose addNamed [ 'bindings', '~1.0.0' ]
+196 verbose addNamed [ null, '>=1.0.0- <1.1.0-' ]
+197 silly lockFile ffec4ddc-bindings-1-0-0 bindings@~1.0.0
+198 verbose lock bindings@~1.0.0 /Users/jeremy/.npm/ffec4ddc-bindings-1-0-0.lock
+199 silly addNameRange { name: 'bindings', range: '>=1.0.0- <1.1.0-', hasData: false }
+200 verbose url raw bindings
+201 verbose url resolving [ 'https://registry.npmjs.org/', './bindings' ]
+202 verbose url resolved https://registry.npmjs.org/bindings
+203 info trying registry request attempt 1 at 20:34:59
+204 verbose etag "CFVJVT1GCZS3UUVQEXZASBJH7"
+205 http GET https://registry.npmjs.org/bindings
+206 http 304 https://registry.npmjs.org/bindings
+207 silly registry.get cb [ 304,
+207 silly registry.get   { server: 'CouchDB/1.3.0 (Erlang OTP/R15B03)',
+207 silly registry.get     etag: '"CFVJVT1GCZS3UUVQEXZASBJH7"',
+207 silly registry.get     date: 'Sat, 11 May 2013 01:35:00 GMT',
+207 silly registry.get     'content-length': '0' } ]
+208 verbose etag bindings from cache
+209 silly addNameRange number 2 { name: 'bindings', range: '>=1.0.0- <1.1.0-', hasData: true }
+210 silly addNameRange versions [ 'bindings',
+210 silly addNameRange   [ '0.0.1',
+210 silly addNameRange     '0.1.0',
+210 silly addNameRange     '0.1.1',
+210 silly addNameRange     '0.2.0',
+210 silly addNameRange     '0.2.1',
+210 silly addNameRange     '0.2.2',
+210 silly addNameRange     '0.2.3',
+210 silly addNameRange     '0.2.4',
+210 silly addNameRange     '0.3.0',
+210 silly addNameRange     '0.4.0',
+210 silly addNameRange     '1.0.0',
+210 silly addNameRange     '1.1.0' ] ]
+211 verbose addNamed [ 'bindings', '1.0.0' ]
+212 verbose addNamed [ '1.0.0', '1.0.0' ]
+213 silly lockFile f01e5454-bindings-1-0-0 bindings@1.0.0
+214 verbose lock bindings@1.0.0 /Users/jeremy/.npm/f01e5454-bindings-1-0-0.lock
+215 verbose read json /Users/jeremy/.npm/bindings/1.0.0/package/package.json
+216 silly lockFile f01e5454-bindings-1-0-0 bindings@1.0.0
+217 silly lockFile f01e5454-bindings-1-0-0 bindings@1.0.0
+218 silly lockFile ffec4ddc-bindings-1-0-0 bindings@~1.0.0
+219 silly lockFile ffec4ddc-bindings-1-0-0 bindings@~1.0.0
+220 silly resolved [ { name: 'bindings',
+220 silly resolved     description: 'Helper module for loading your native module\'s .node file',
+220 silly resolved     keywords: [ 'native', 'addon', 'bindings', 'gyp', 'waf', 'c', 'c++' ],
+220 silly resolved     version: '1.0.0',
+220 silly resolved     author:
+220 silly resolved      { name: 'Nathan Rajlich',
+220 silly resolved        email: 'nathan@tootallnate.net',
+220 silly resolved        url: 'http://tootallnate.net' },
+220 silly resolved     repository:
+220 silly resolved      { type: 'git',
+220 silly resolved        url: 'git://github.com/TooTallNate/node-bindings.git' },
+220 silly resolved     main: './bindings.js',
+220 silly resolved     readme: 'node-bindings\n=============\n### Helper module for loading your native module\'s .node file\n\nThis is a helper module for authors of Node.js native addon modules.\nIt is basically the "swiss army knife" of `require()`ing your native module\'s\n`.node` file.\n\nThroughout the course of Node\'s native addon history, addons have ended up being\ncompiled in a variety of different places, depending on which build tool and which\nversion of node was used. To make matters worse, now the _gyp_ build tool can\nproduce either a _Release_ or _Debug_ build, each being built into different\nlocations.\n\nThis module checks _all_ the possible locations that a native addon would be built\nat, and returns the first one that loads successfully.\n\n\nInstallation\n------------\n\nInstall with `npm`:\n\n``` bash\n$ npm install bindings\n```\n\nOr add it to the `"dependencies"` section of your _package.json_ file.\n\n\nExample\n-------\n\n`require()`ing the proper bindings file for the current node version, platform\nand architecture is as simple as:\n\n``` js\nvar bindings = require(\'bindings\')(\'binding.node\')\n\n// Use your bindings defined in your C files\nbindings.your_c_function()\n```\n\n\nNice Error Output\n-----------------\n\nWhen the `.node` file could not be loaded, `node-bindings` throws an Error with\na nice error message telling you exactly what was tried. You can also check the\n`err.tries` Array property.\n\n```\nError: Could not load the bindings file. Tried:\n → /Users/nrajlich/ref/build/binding.node\n → /Users/nrajlich/ref/build/Debug/binding.node\n → /Users/nrajlich/ref/build/Release/binding.node\n → /Users/nrajlich/ref/out/Debug/binding.node\n → /Users/nrajlich/ref/Debug/binding.node\n → /Users/nrajlich/ref/out/Release/binding.node\n → /Users/nrajlich/ref/Release/binding.node\n → /Users/nrajlich/ref/build/default/binding.node\n → /Users/nrajlich/ref/compiled/0.8.2/darwin/x64/binding.node\n    at bindings (/Users/nrajlich/ref/node_modules/bindings/bindings.js:84:13)\n    at Object.<anonymous> (/Users/nrajlich/ref/lib/ref.js:5:47)\n    at Module._compile (module.js:449:26)\n    at Object.Module._extensions..js (module.js:467:10)\n    at Module.load (module.js:356:32)\n    at Function.Module._load (module.js:312:12)\n    ...\n```\n\n\nLicense\n-------\n\n(The MIT License)\n\nCopyright (c) 2012 Nathan Rajlich &lt;nathan@tootallnate.net&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
+220 silly resolved     readmeFilename: 'README.md',
+220 silly resolved     _id: 'bindings@1.0.0',
+220 silly resolved     _from: 'bindings@~1.0.0' } ]
+221 info install bindings@1.0.0 into /Users/jeremy/Sites/album-grabber/node_modules/couchbase
+222 info installOne bindings@1.0.0
+223 verbose from cache /Users/jeremy/.npm/bindings/1.0.0/package/package.json
+224 info /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings unbuild
+225 verbose read json /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings/package.json
+226 verbose tar unpack /Users/jeremy/.npm/bindings/1.0.0/package.tgz
+227 silly lockFile 84f1cecd--couchbase-node-modules-bindings /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings
+228 verbose lock /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings /Users/jeremy/.npm/84f1cecd--couchbase-node-modules-bindings.lock
+229 silly lockFile 13c7cc4e-y-npm-bindings-1-0-0-package-tgz /Users/jeremy/.npm/bindings/1.0.0/package.tgz
+230 verbose lock /Users/jeremy/.npm/bindings/1.0.0/package.tgz /Users/jeremy/.npm/13c7cc4e-y-npm-bindings-1-0-0-package-tgz.lock
+231 silly gunzTarPerm modes [ '755', '644' ]
+232 silly gunzTarPerm extractEntry package.json
+233 silly gunzTarPerm extractEntry README.md
+234 silly gunzTarPerm extractEntry bindings.js
+235 verbose read json /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings/package.json
+236 silly lockFile 84f1cecd--couchbase-node-modules-bindings /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings
+237 silly lockFile 84f1cecd--couchbase-node-modules-bindings /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings
+238 silly lockFile 13c7cc4e-y-npm-bindings-1-0-0-package-tgz /Users/jeremy/.npm/bindings/1.0.0/package.tgz
+239 silly lockFile 13c7cc4e-y-npm-bindings-1-0-0-package-tgz /Users/jeremy/.npm/bindings/1.0.0/package.tgz
+240 info preinstall bindings@1.0.0
+241 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings/package.json
+242 verbose readDependencies using package.json deps
+243 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings/package.json
+244 verbose readDependencies using package.json deps
+245 silly resolved []
+246 verbose about to build /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings
+247 info build /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings
+248 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules/bindings/package.json
+249 verbose linkStuff [ false,
+249 verbose linkStuff   false,
+249 verbose linkStuff   false,
+249 verbose linkStuff   '/Users/jeremy/Sites/album-grabber/node_modules/couchbase/node_modules' ]
+250 info linkStuff bindings@1.0.0
+251 verbose linkBins bindings@1.0.0
+252 verbose linkMans bindings@1.0.0
+253 verbose rebuildBundles bindings@1.0.0
+254 info install bindings@1.0.0
+255 info postinstall bindings@1.0.0
+256 verbose about to build /Users/jeremy/Sites/album-grabber/node_modules/couchbase
+257 info build /Users/jeremy/Sites/album-grabber/node_modules/couchbase
+258 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/couchbase/package.json
+259 verbose linkStuff [ false,
+259 verbose linkStuff   false,
+259 verbose linkStuff   false,
+259 verbose linkStuff   '/Users/jeremy/Sites/album-grabber/node_modules' ]
+260 info linkStuff couchbase@0.0.12
+261 verbose linkBins couchbase@0.0.12
+262 verbose linkMans couchbase@0.0.12
+263 verbose rebuildBundles couchbase@0.0.12
+264 verbose rebuildBundles [ 'bindings' ]
+265 info install couchbase@0.0.12
+266 verbose unsafe-perm in lifecycle true
+267 silly exec sh "-c" "node-gyp rebuild"
+268 silly sh,-c,node-gyp rebuild,/Users/jeremy/Sites/album-grabber/node_modules/couchbase spawning
+269 info couchbase@0.0.12 Failed to exec install script
+270 info /Users/jeremy/Sites/album-grabber/node_modules/couchbase unbuild
+271 verbose from cache /Users/jeremy/Sites/album-grabber/node_modules/couchbase/package.json
+272 info preuninstall couchbase@0.0.12
+273 info uninstall couchbase@0.0.12
+274 verbose true,/Users/jeremy/Sites/album-grabber/node_modules,/Users/jeremy/Sites/album-grabber/node_modules unbuild couchbase@0.0.12
+275 info postuninstall couchbase@0.0.12
+276 error couchbase@0.0.12 install: `node-gyp rebuild`
+276 error `sh "-c" "node-gyp rebuild"` failed with 1
+277 error Failed at the couchbase@0.0.12 install script.
+277 error This is most likely a problem with the couchbase package,
+277 error not with npm itself.
+277 error Tell the author that this fails on your system:
+277 error     node-gyp rebuild
+277 error You can get their info via:
+277 error     npm owner ls couchbase
+277 error There is likely additional logging output above.
+278 error System Darwin 12.3.0
+279 error command "node" "/usr/local/bin/npm" "install"
+280 error cwd /Users/jeremy/Sites/album-grabber
+281 error node -v v0.10.5
+282 error npm -v 1.2.18
+283 error code ELIFECYCLE
+284 verbose exit [ 1, true ]
