@@ -48,25 +48,6 @@ $(document).ready(function() {
 	$('#relevance').change(function(e) {
 		var relevance = $(this).val();
 		console.log(relevance);
-		var message = "";
-		switch(relevance) {
-			case '0':
-				message = "Exactly The Same"
-				break;
-			case '3':
-				message = "Mostly The Same"
-				break;
-			case '6': 
-				message = "Sort of the Same"
-				break;
-			case '9':
-				message = "Only a bit the same"
-				break;
-			case '12': 
-				message = "Not really the same at all"
-				break;
-		}
-		console.log(message);
-		$('#relevanceLabel').html(message);
+		$('#relevanceLabel').html(relevance);
 	});
 });
