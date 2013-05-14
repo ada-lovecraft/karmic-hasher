@@ -3,22 +3,6 @@ extends layout
 block content
 	h1= title
 	p Welcome to #{title}
-	div#socket
-		p#broadcast
-		p#function
-		p#status
-	div#controls
-		p
-			img#portrait
-		p
-			div#relevanceLabel Mostly The Same
-			input#relevance(type='range', min='15', max='30',value='23')
-		div#message
-	div#images
-		if images
-			each image in images
-				img.karmic-thumb(src="/thumbs/" + subreddit + '/' + image.link ,data-file=image.link, data-hash=image.hash, data-score=image.score)
-		else
-			div#message= message
-	script(type="text/javascript")
-		var subreddit = '#{subreddit}'
+	p try going to 
+		a(href="/r/cats") /r/cats
+	

@@ -74,17 +74,17 @@ function getSubreddit(req,res) {
 			if (pos == -1) {
 				queue.push(subreddit);
 				app.io.broadcast("global:broadcast", { message: subreddit + ' added to load queue at position:' + queue.length })
-				res.render('index', { title: 'karmic hash' ,subreddit: subreddit,  images: null, message:'Added ' + subreddit + ' to queue at position: ' + queue.length });
+				res.render('subreddit', { title: 'karmic hash' ,subreddit: subreddit,  images: null, message:'Added ' + subreddit + ' to queue at position: ' + queue.length });
 				if (queue.length == 1)  
 					processQueue();
 			}
-			res.render('index', { title: 'album grabber' , subreddit: subreddit, images: null,message:"Already in queue at position: " + pos});
+			res.render('subreddit', { title: 'karmic hash' , subreddit: subreddit, images: null,message:"Already in queue at position: " + pos});
 			
 		} else {
 				var hashPos = hashQueue.indexOf(subreddit);
 				var thumbPos = thumbQueue.indexOf(subreddit);
 				if (hashPos == -1 && thumbPos == -1) 
-					res.render('index', {title:'karmic hash ' + subreddit, subreddit: subreddit, images: doc, message: subreddit});	
+					res.render('subreddit', {title:'karmic hash ' + subreddit, subreddit: subreddit, images: doc, message: subreddit});	
 		}
 	});
 }
@@ -128,28 +128,26 @@ function processQueue() {
   			res.on('end', function() {
 
   				var json = JSON.parse(doc);
-
+  				var spliceCount = 0;
   				//spin through each image object
+  				var imageArray = new Array();
   				json.data.forEach(function(image,index,array) {
 
   					//we don't want gifs
-  					if (!image.link.match(/\.gif/)) {
+  					if (!image.link.match(/\.gif$/) ) {
   						//get the image extension
   						var ext = image.link.match(/\.\w+$/);
   						//change the link to give us the (l)arge version so we don't kill ourselves on bandwidth
   						//also remove the http://i.imgur.com/ text from the link
   						image.link = image.link.replace(/\.\w+$/,'l' + ext).replace(/http:\/\/i.imgur.com\//g,'');
   						
-  						json.data[index] = image; 
+  						imageArray.push(image); 
   						app.io.broadcast('global:status', { message: subredditName + " -- Found: " + image.link});
-  					} else {
-  						//remove the image from the document if it's a gif
-  						json.data.splice(index,1);
-  					}
+  					} 
   				});
 
   				//concatenate our data array with the array we just receieved.
-  				data.push.apply(data,json.data);
+  				data.push.apply(data,imageArray);
 
   				//check to see if we're done spinning through the pages
   				if (++pagesDone == pages) {
@@ -248,6 +246,7 @@ function getImagesFromSubreddit(subreddit) {
 					                            if (err) {
 					                            	console.log('ERROR WRITING FILE: ' + err)
 					                            	console.log(imagesComplete + " / " + totalImages);
+					                            	throw(err);
 					                            }
 					                            else 
 					                            	console.log(filename + ' saved');
@@ -309,6 +308,7 @@ function processHashQueue() {
 
 				} catch(e) {
 					console.log('ERROR PROCESSING FILE: ' + image.id + " : " + e);
+					throw(e);
 					doc.splice(index,1);
 				}
 
