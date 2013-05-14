@@ -3,6 +3,12 @@ extends layout
 block content
 	h1= title
 	p Welcome to #{title}
+	div#socket
+		p#broadcast
+		p#function
+		p#status
 	p try going to 
 		a(href="/r/cats") /r/cats
-	
+
+	script(type="text/javascript")
+		var subreddit = 'karmic-hash'

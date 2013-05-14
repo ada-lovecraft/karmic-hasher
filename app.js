@@ -53,6 +53,10 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.io.configure('development', function(){
+  app.io.set('transports', ['xhr-polling']);
+});
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -294,7 +298,7 @@ function processHashQueue() {
 			//here's where I'm having issues... 
 			//PROBLEM: This block is... well.. blocking the server.
 
-			async.each(doc,function(image,callback) {
+			doc.forEach(function(image,index,array) {
 				try {
 
 					var filename = image.link;
@@ -319,33 +323,23 @@ function processHashQueue() {
 		        	app.io.broadcast('global:status', { message: subreddit + " hashed:  " + percent + "%"});
 		        }
 				
-		        //async callback
-				callback();
-
-			},function(err) {
-				if (err)
-					console.log('ASYNC ERROR: ' + err);
-
-				else {
-					//write the document back to couch
-					couch.set(subreddit, doc,function(err) {
-						if(err)
-							console.log(err);
-						thumbQueue.push(subreddit);
-						if (thumbQueue.length == 1)
-							processThumbQueue();
-						hashQueue.shift();
-						if(hashQueue.length >0)
-							processHashQueue();
-						else 
-							console.log('hashQueue finished');
-					});
-				}
 
 			});
-			
+			//write the document back to couch
+			couch.set(subreddit, doc,function(err) {
+				if(err)
+					console.log(err);
+				thumbQueue.push(subreddit);
+				if (thumbQueue.length == 1)
+					processThumbQueue();
+				hashQueue.shift();
+				if(hashQueue.length >0)
+					processHashQueue();
+				else 
+					console.log('hashQueue finished');
+			});
 		}
-	})
+	});
 }
 
 function processThumbQueue() {
