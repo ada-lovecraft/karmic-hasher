@@ -1,8 +1,27 @@
 
 $(document).ready(function() {
-	console.log(subreddit);
+	var App = {};
+    App.socket = io.connect();
 
-	$('.karmic-thumb').click(function(e) {
+	App.socket.on("global:broadcast", function(data) {
+		$('#broadcast').html(data.message);
+	});	
+
+	App.socket.on("global:function", function(data) {
+		$('#function').html(data.message);
+	});	
+
+	App.socket.on("global:status", function(data) {
+		$('#status').html(data.message);
+	});	
+
+	App.socket.on(subreddit + ':done', function(data) {
+		data.images.forEach(function(image,index,array) {
+			$('#images').append('<img src="/thumbs/' + subreddit + '/' + image.link +'" data-file="' + image.link +'" data-hash="' + image.hash +'" data-score="' + image.score + '" class="karmic-thumb"/>')
+		});
+	});
+
+	$('.karmic-thumb').on('click',function(e) {
 		$('#relevance').val(23);
 		$('#relevanceLabel').html('Relevance Factor: 23');
 		$('#controls').show();
