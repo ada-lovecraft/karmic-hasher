@@ -21,7 +21,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$('.karmic-thumb').on('click',function(e) {
+	$('#images').on('click','.karmic-thumb',function(e) {
 		$('#relevance').val(23);
 		$('#relevanceLabel').html('Relevance Factor: 23');
 		$('#controls').show();
