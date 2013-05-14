@@ -11,6 +11,7 @@
     "couchbase":"*",
     "node-thumbnail":"*",
     "express.io":"*",
+    "async":"*",
     "phash":"0.0.2"
   }
 }
