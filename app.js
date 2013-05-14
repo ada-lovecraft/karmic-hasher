@@ -322,8 +322,6 @@ function processHashQueue() {
 		        	percent = currentPercent;
 		        	app.io.broadcast('global:status', { message: subreddit + " hashed:  " + percent + "%"});
 		        }
-				
-
 			});
 			//write the document back to couch
 			couch.set(subreddit, doc,function(err) {
@@ -356,7 +354,8 @@ function processThumbQueue() {
 	 		suffix: '',
 	 		width: 100,
 	 		height: 100,
-	 		silent: true
+	 		quiet: true,
+	 		gravity: 'NORTH'
 		}, function() {
 			//when done with thumbnails, send a socket broadcast to anyone
 			//waiting on the subreddit to complete with an image list
