@@ -4,6 +4,7 @@
  */
 
 var express = require('express.io')
+  , cp = require('child_process')
   , routes = require('./routes')
   , http = require('http')
   , https = require('https')
@@ -97,8 +98,10 @@ function getSubreddit(req,res) {
 function processQueue() {
 
 	var subredditName = queue[0];
-	app.io.broadcast('global:function', {message: 'Processing Queue: ' + subredditName});
+	console.log('processsing: ' + subredditName);
+	//app.io.broadcast('global:function', {message: 'Processing Queue: ' + subredditName});
 	var pages = process.env.IMGUR_PAGES;
+	console.log('pages: ' + pages);
 	var startPage = 0;
 	var pageURL = '';
 	var pagesDone = 0;
@@ -117,12 +120,13 @@ function processQueue() {
 			hostname: 'api.imgur.com',
 			path: pageURL,
 			headers: {
-				'Authorization' : 'Client-ID f3213eac0f1a897'
+				'Authorization' : 'Client-ID ' + process.env.IMGUR_KEY
 			},
 			method: 'GET'
 		};
-		
+		console.log(pageURL);
 		https.get(options,function(res) {
+
 			var doc = '';
 
 			res.on('data', function (chunk) {
@@ -130,8 +134,9 @@ function processQueue() {
   			});
 
   			res.on('end', function() {
-
+  				console.log(doc);
   				var json = JSON.parse(doc);
+
   				var spliceCount = 0;
   				//spin through each image object
   				var imageArray = new Array();
@@ -297,45 +302,34 @@ function processHashQueue() {
 		else {
 			//here's where I'm having issues... 
 			//PROBLEM: This block is... well.. blocking the server.
-
-			doc.forEach(function(image,index,array) {
-				try {
-
-					var filename = image.link;
-
-					//get the perceptual hash of the image;
-					// this hits a node module that has a c++ backend
-					image.hash = phash.getImageHash('public/images/' + subreddit + '/' + filename);
-
-					doc[currentIndex] = image;
-					currentIndex++;
-
-				} catch(e) {
-					console.log('ERROR PROCESSING FILE: ' + image.id + " : " + e);
-					throw(e);
-					doc.splice(index,1);
+			var p = cp.fork(__dirname+'/hash-worker.js');
+			
+			p.on('message', function(m) {
+				
+				if (m.status == 'hashing')
+				{
+					app.io.broadcast('global:status',{message: subreddit + " -- hashing: " + m.percent + '%'});
+				} else {
+					//write the document back to couch
+					couch.set(subreddit, m.hashes,function(err) {
+						if(err)
+							console.log(err);
+						thumbQueue.push(subreddit);
+						if (thumbQueue.length == 1)
+							processThumbQueue();
+						hashQueue.shift();
+						if(hashQueue.length >0)
+							processHashQueue();
+						else 
+							console.log('hashQueue finished');
+					});
 				}
 
-				//check percentage of hashing complete
-				var currentPercent = Math.floor((++imagesHashed/doc.length) * 100);
-		        if (currentPercent > percent) {
-		        	percent = currentPercent;
-		        	app.io.broadcast('global:status', { message: subreddit + " hashed:  " + percent + "%"});
-		        }
 			});
-			//write the document back to couch
-			couch.set(subreddit, doc,function(err) {
-				if(err)
-					console.log(err);
-				thumbQueue.push(subreddit);
-				if (thumbQueue.length == 1)
-					processThumbQueue();
-				hashQueue.shift();
-				if(hashQueue.length >0)
-					processHashQueue();
-				else 
-					console.log('hashQueue finished');
-			});
+
+			p.send({images: doc, subreddit:subreddit});
+			
+			
 		}
 	});
 }
