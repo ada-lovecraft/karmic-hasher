@@ -85,6 +85,10 @@ $(document).ready(function() {
 					title: "Relevance vs Karma"
 					, renderTo:'chart'
 				},
+				legend: {
+					layout: 'horizontal',
+					itemWidth: 200
+				},
 				title: {
 					text: 'Karmic Scores'
 				},
