@@ -27,8 +27,12 @@ $(document).ready(function() {
 		$('#controls').show();
 		var karmicHash = $(this).data('hash');
 		var karmicFile = $(this).data('file');
+		var karmicComments = $(this).data('comments');
+		var karmicTitle = $(this).data('title');
 		$('#portrait').attr('src','/images/' + subreddit + '/' + karmicFile);
+		$('#comment-link').attr('href','http://reddit.com' + karmicComments).html(karmicTitle);
 		$('#portrait').data('hash',karmicHash);
+		$('')
 		$('.karmic-thumb').hide();
 		$.ajax('/matches/' + subreddit + '/' + karmicHash + '/' + 23)
 			.done(function(data) {

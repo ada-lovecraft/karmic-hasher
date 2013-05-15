@@ -10,6 +10,8 @@ block content
 	div#controls
 		p
 			img#portrait
+			p Comments: 
+				a#comment-link
 		p
 			div#relevanceLabel Mostly The Same
 			input#relevance(type='range', min='15', max='30',value='23')
@@ -17,7 +19,7 @@ block content
 	div#images
 		if images
 			each image in images
-				img.karmic-thumb(src="/thumbs/" + subreddit + '/' + image.link ,data-file=image.link, data-hash=image.hash, data-score=image.score)
+				img.karmic-thumb(src="/thumbs/" + subreddit + '/' + image.link ,data-file=image.link, data-hash=image.hash, data-score=image.score, data-comments=image.reddit_comments, data-title=image.title)
 		else
 			div#message= message
 	script(type="text/javascript")
