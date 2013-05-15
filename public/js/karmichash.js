@@ -76,7 +76,16 @@ $(document).ready(function() {
 
 			});
 			average = Math.floor(total / data.length);
-			chartData.push({type: 'spline',name: 'Average', data: [average,average]})
+			chartData.push({
+				type: 'line'
+				, name: 'Average'
+				, data: [average]
+				,marker: {
+                	lineWidth: 2,
+                	lineColor: Highcharts.getOptions().colors[1],
+                	fillColor: 'white'
+                }
+			});
 
 			$('.featured').fadeIn(); 
 			$('#message').html(data.length + ' Matches Found');	
