@@ -67,19 +67,23 @@ $(document).ready(function() {
 		$('.karmic-thumb').removeClass('featured');
 		if (data.length > 0) {
 			var chartData = new Array();
-
+			var total = 0;
+			var average = 0;
 			data.forEach(function(pic,index,array) {
-				chartData.push({name: pic.title.trunc(25), data:[pic.score]});
+				total += pic.score;
+				chartData.push({type: 'column', name: pic.title.trunc(25), data:[pic.score]});
 				$('.karmic-thumb[data-hash=' + pic.hash + ']').addClass('featured');
 
 			});
+			average = total / data.length;
+			chartData.push({type: 'spline',name: 'Average', data: [average,average]})
 
 			$('.featured').fadeIn(); 
 			$('#message').html(data.length + ' Matches Found');	
 			var h=new Highcharts.Chart({
 				chart: {
-					type:'column',
-					renderTo:'chart'
+					title: "Relevance vs Karma"
+					, renderTo:'chart'
 				},
 				title: {
 					text: 'Karmic Scores'
