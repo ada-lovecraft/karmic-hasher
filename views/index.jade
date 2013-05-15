@@ -2,13 +2,12 @@ extends layout
 
 block content
 	h1= title
-	p Welcome to #{title}
-	div#socket
+	div#socket.hide
 		p#broadcast
 		p#function
 		p#status
-	p try going to 
-		a(href="/r/earthporn", target="_new") /r/earthporn
+	div
+		include markdown/introduction.markdown
 
 	script(type="text/javascript")
 		var subreddit = 'karmic-hash'
