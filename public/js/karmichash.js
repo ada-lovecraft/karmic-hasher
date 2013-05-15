@@ -1,5 +1,7 @@
 
 $(document).ready(function() {
+	
+
 	var App = {};
     App.socket = io.connect();
 
@@ -22,31 +24,25 @@ $(document).ready(function() {
 	});
 
 	$('#images').on('click','.karmic-thumb',function(e) {
-		$('#relevance').val(23);
-		$('#relevanceLabel').html('Relevance Factor: 23');
-		$('#controls').show();
-		var karmicHash = $(this).data('hash');
-		var karmicFile = $(this).data('file');
-		var karmicComments = $(this).data('comments');
-		var karmicTitle = $(this).data('title');
-		$('#portrait').attr('src','/images/' + subreddit + '/' + karmicFile);
-		$('#comment-link').attr('href','http://reddit.com' + karmicComments).html(karmicTitle);
-		$('#portrait').data('hash',karmicHash);
-		$('')
-		$('.karmic-thumb').hide();
-		$.ajax('/matches/' + subreddit + '/' + karmicHash + '/' + 23)
-			.done(function(data) {
-				$('.karmic-thumb').removeClass('featured');
-				if (data.length > 0) {
-					data.forEach(function(pic,index,array) {
-						$('.karmic-thumb[data-hash=' + pic.hash + ']').addClass('featured');
-					});
-					$('.featured').fadeIn(); 
-					$('#message').html(data.length + ' Matches Found');
-				} else {
-					$('#message').html('No Matches Found');
+
+			
+			$('#relevance').val(23);
+			$('#relevanceLabel').html('Relevance Factor: 23');
+			$('#controls').show();
+			var karmicHash = $(this).data('hash');
+			var karmicFile = $(this).data('file');
+			var karmicComments = $(this).data('comments');
+			var karmicTitle = $(this).data('title');
+			$('#portrait').attr('src','/images/' + subreddit + '/' + karmicFile);
+			$('#comment-link').attr('href','http://reddit.com' + karmicComments).html(karmicTitle);
+			$('#portrait').data('hash',karmicHash);
+			$('')
+			$('.karmic-thumb').hide();
+			$.ajax('/matches/' + subreddit + '/' + karmicHash + '/' + 23)
+				.done(function(data) {
+					displayResults(data);
 				}
-			});
+			);
 	});
 
 	$('#relevance').mouseup(function(e) {
@@ -54,23 +50,52 @@ $(document).ready(function() {
 		var relevance = $(this).val();
 		$.ajax('/matches/' + subreddit + '/' + karmicHash + '/' + relevance)
 			.done(function(data) {
-				$('.karmic-thumb').removeClass('featured');
-				if (data.length > 0) {
-					data.forEach(function(pic,index,array) {
-						$('.karmic-thumb[data-hash=' + pic.hash + ']').addClass('featured');
-					});
-					$('.karmic-thumb').hide();
-					$('.featured').fadeIn(); 
-					$('#message').html(data.length + ' Matches Found');
-				} else {
-					$('.karmic-thumb').fadeOut();
-					$('#message').html('No Matches Found');
-				}
-			});
+				displayResults(data);		
+			}
+		);
 	});
 	$('#relevance').change(function(e) {
 		var relevance = $(this).val();
 		console.log(relevance);
 		$('#relevanceLabel').html('Relevance Factor: ' + relevance);
 	});
+
+	function displayResults(data) {
+		$('.karmic-thumb').removeClass('featured');
+		if (data.length > 0) {
+			var chartData = new Array();
+
+			data.forEach(function(pic,index,array) {
+				chartData.push({name: pic.title, data:[pic.score]});
+				$('.karmic-thumb[data-hash=' + pic.hash + ']').addClass('featured');
+
+			});
+
+			$('.featured').fadeIn(); 
+			$('#message').html(data.length + ' Matches Found');	
+			var h=new Highcharts.Chart({
+				chart: {
+					type:'column',
+					renderTo:'chart'
+				},
+				title: {
+					text: 'Karmic Scores'
+				},
+				xAxis: {
+					categories: ['Karma']
+				},
+				yAxis: {
+					title: {
+						text: 'Karmic Score'
+					}
+				},
+				series: chartData
+
+			});
+		} else {
+			$('#message').html('No Matches Found');
+		}
+	}
+
+
 });
