@@ -75,7 +75,7 @@ $(document).ready(function() {
 				$('.karmic-thumb[data-hash=' + pic.hash + ']').addClass('featured');
 
 			});
-			average = total / data.length;
+			average = Math.floor(total / data.length);
 			chartData.push({type: 'spline',name: 'Average', data: [average,average]})
 
 			$('.featured').fadeIn(); 
