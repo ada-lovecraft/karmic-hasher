@@ -136,7 +136,6 @@ function processQueue() {
   			res.on('end', function() {
   				console.log(doc);
   				var json = JSON.parse(doc);
-
   				var spliceCount = 0;
   				//spin through each image object
   				var imageArray = new Array();
@@ -157,16 +156,25 @@ function processQueue() {
 
   				//concatenate our data array with the array we just receieved.
   				data.push.apply(data,imageArray);
+  				console.log('lol');
 
   				//check to see if we're done spinning through the pages
   				if (++pagesDone == pages) {
+  					console.log('pages done');
   					//set the document in couch
-  					couch.set(subredditName,data,function(err) {
-  						if (err)
-  							throw err;
-  						//and begin actually loading the images
-  						getImagesFromSubreddit(subredditName)
-  					});
+  					if (data.length > 0) {
+  						couch.set(subredditName,data,function(err) {
+  							if (err)
+  								throw err;
+  							//and begin actually loading the images
+  							getImagesFromSubreddit(subredditName)
+  						});
+  					} else {
+  						app.io.broadcast('global:status', { message: subredditName + " not a viable reddit "});
+  						queue.shift();
+  						if (queue.length > 0)
+        					processQueue();
+  					}
   				}
 
   			});
@@ -204,9 +212,7 @@ function getImagesFromSubreddit(subreddit) {
         		processQueue();
         	else 
         		console.log('queue finished');
-        } else {
-        	console.log(totalImages - imagesComplete + " images to go for " + subreddit);
-        }
+        } 
 
         //calculate percent done
         var currentPercent = Math.floor((imagesComplete/totalImages) * 100);
@@ -257,8 +263,6 @@ function getImagesFromSubreddit(subreddit) {
 					                            	console.log(imagesComplete + " / " + totalImages);
 					                            	throw(err);
 					                            }
-					                            else 
-					                            	console.log(filename + ' saved');
 					                            //call checkqueueu after writing a file
 						                        checkQueue();
 					                    });
