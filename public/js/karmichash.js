@@ -1,6 +1,9 @@
 
 $(document).ready(function() {
-	
+	String.prototype.trunc = 
+      function(n){
+          return this.substr(0,n-1)+(this.length>n?'...':'');
+      };
 
 	var App = {};
     App.socket = io.connect();
@@ -66,7 +69,7 @@ $(document).ready(function() {
 			var chartData = new Array();
 
 			data.forEach(function(pic,index,array) {
-				chartData.push({name: pic.title, data:[pic.score]});
+				chartData.push({name: pic.title.trunc(25), data:[pic.score]});
 				$('.karmic-thumb[data-hash=' + pic.hash + ']').addClass('featured');
 
 			});

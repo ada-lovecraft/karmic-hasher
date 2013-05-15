@@ -16,6 +16,9 @@ The hashing algorithm uses formations in the image to create the hash. So, inste
 ###Why are the thumbnails in black and white?
 It's easier to see forms in an image when you're not trying to compare colors in an image.
 
+###The scores are way off.
+At the time of this writing, I'm not using the reddit karma score. Instead, I'm using the imgur score. I do plan on changing that, though it'll require hammering the reddit API, which they may not take kindly to.
+
 ###I still don't quite understand how this works.
 HackerFactor has a good article about it that explains it an easy to understand way: [Looks Like It!](http://www.hackerfactor.com/blog/?/archives/432-Looks-Like-It.html) 
 
