@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 	App.socket.on(subreddit + ':done', function(data) {
 		data.images.forEach(function(image,index,array) {
-			$('#images').append('<img src="/thumbs/' + subreddit + '/' + image.link +'" data-file="' + image.link +'" data-hash="' + image.hash +'" data-score="' + image.score + '" class="karmic-thumb"/>')
+			$('#images').append('<img src="/thumbs/' + subreddit + '/' + image.link +'" data-file="' + image.link +'" data-hash="' + image.hash +'" data-score="' + image.score + '" data-comments="' + image.reddit_comments+ '" data-title="' + image.title + '" class="karmic-thumb"/>')
 		});
 	});
 
