@@ -214,8 +214,10 @@ function getImagesFromSubreddit(subreddit) {
 	
 	var checkQueue = function() {
 		 if (++imagesComplete == totalImages) {
+
 		 	//if we've loaded all the images for this subreddit
 		 	//hydrate our hashQueue
+		 	console.log(subreddit + " : pushing to hash queue");
 		 	hashQueue.push(subreddit);
 			
 			//if the hashqueue is wet and isn't running, start it
@@ -232,6 +234,7 @@ function getImagesFromSubreddit(subreddit) {
         } 
 
         //calculate percent done
+        console.log(subreddit + " LOADED IMAGES: " + imagesComplete + " / " + totalImages);
         var currentPercent = Math.floor((imagesComplete/totalImages) * 100);
         if (currentPercent > percent) {
         	percent = currentPercent;
@@ -255,7 +258,7 @@ function getImagesFromSubreddit(subreddit) {
 			console.log('totalImages: ' + totalImages);
 			images.forEach(function(image,index,array) {
 				//doubhle check for gifs..
-				if (!image.link.match(/\.gif/)) {
+				if (!image.link.match(/\.gif$/)) {
 					//grab the file name for local saving
 					var filename = image.link;
 					
@@ -300,6 +303,8 @@ function getImagesFromSubreddit(subreddit) {
 				        }	       
 				        
 				    }); 
+				} else {
+					checkQueue();
 				}
 			});
 		});
