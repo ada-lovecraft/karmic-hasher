@@ -40,7 +40,6 @@ $(document).ready(function() {
 			$('#comment-link').attr('href','http://reddit.com' + karmicComments).html(karmicTitle);
 			$('#portrait').data('hash',karmicHash);
 			$('')
-			$('.karmic-thumb').hide();
 			$.ajax('/matches/' + subreddit + '/' + karmicHash + '/' + 23)
 				.done(function(data) {
 					displayResults(data);
@@ -64,6 +63,7 @@ $(document).ready(function() {
 	});
 
 	function displayResults(data) {
+		$('.karmic-thumb').hide();
 		$('.karmic-thumb').removeClass('featured');
 		if (data.length > 0) {
 			var chartData = new Array();

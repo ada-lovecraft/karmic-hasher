@@ -155,7 +155,7 @@ function processQueue() {
   				json.data.forEach(function(image,index,array) {
 
   					//we don't want gifs
-  					if (!image.link.match(/\.gif$/ && idList.indexOf(image.id) == -1) ) {
+  					if (!image.link.match(/\.gif$/) && idList.indexOf(image.id) == -1) {
   						//console.log(image.id);
   						idList.push(image.id);
   						console.log('images found: ' + idList.length);
