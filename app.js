@@ -33,8 +33,10 @@ var couchConfig = {
 
 
 couchbase.connect(couchConfig, function (err, bucket) {
-	if(err) 
+	if(err)  {
+		console.log('connection error');
 		throw err;
+	}
 	else {
 		app.set('bucket', bucket);
 		couch = bucket;
@@ -107,15 +109,28 @@ function processQueue() {
 	var pagesDone = 0;
 
 	//the imgur API Path
-	var apipath = '/3/gallery/r/' + subredditName +'/top/year/'
-
+	var apiYear = '/3/gallery/r/' + subredditName +'/top/year/';
+	var apiMonth = '/3/gallery/r/' + subredditName +'/top/month/';
+	var apiWeek = '/3/gallery/r/' + subredditName +'/top/week/';
+	var apiDay =  '/3/gallery/r/' + subredditName +'/top/day/'
+	var apiLatest = '/3/gallery/r/' + subredditName +'/time/'
+	var urls = new Array();
 
 	var options = null;
 	var data = new Array();
+	var idList = new Array();
 
 	//get each page of imgur results from the imgur api
 	for(var i = startPage; i < startPage + pages; i++) {
-		pageURL = apipath + i; 
+		urls.push(apiYear + i); 
+		urls.push(apiMonth + i); 
+		urls.push(apiWeek + i); 
+		urls.push(apiDay + i); 
+		urls.push(apiLatest + i);
+	}
+
+	console.log("urls created: " + urls);
+	urls.forEach(function(pageURL) {
 		options = {
 			hostname: 'api.imgur.com',
 			path: pageURL,
@@ -124,7 +139,6 @@ function processQueue() {
 			},
 			method: 'GET'
 		};
-		console.log(pageURL);
 		https.get(options,function(res) {
 
 			var doc = '';
@@ -134,7 +148,6 @@ function processQueue() {
   			});
 
   			res.on('end', function() {
-  				console.log(doc);
   				var json = JSON.parse(doc);
   				var spliceCount = 0;
   				//spin through each image object
@@ -142,7 +155,10 @@ function processQueue() {
   				json.data.forEach(function(image,index,array) {
 
   					//we don't want gifs
-  					if (!image.link.match(/\.gif$/) ) {
+  					if (!image.link.match(/\.gif$/ && idList.indexOf(image.id) == -1) ) {
+  						//console.log(image.id);
+  						idList.push(image.id);
+  						console.log('images found: ' + idList.length);
   						//get the image extension
   						var ext = image.link.match(/\.\w+$/);
   						//change the link to give us the (l)arge version so we don't kill ourselves on bandwidth
@@ -150,24 +166,25 @@ function processQueue() {
   						image.link = image.link.replace(/\.\w+$/,'l' + ext).replace(/http:\/\/i.imgur.com\//g,'');
   						
   						imageArray.push(image); 
+
   						app.io.broadcast('global:status', { message: subredditName + " -- Found: " + image.link});
   					} 
   				});
 
   				//concatenate our data array with the array we just receieved.
   				data.push.apply(data,imageArray);
-  				console.log('lol');
-
+  				console.log('data length: ' + data.length);
   				//check to see if we're done spinning through the pages
-  				if (++pagesDone == pages) {
-  					console.log('pages done');
+  				if (++pagesDone == pages * 5) {
   					//set the document in couch
   					if (data.length > 0) {
+  						console.log('***** PRE INSERT LENGTH: ' + data.length);
   						couch.set(subredditName,data,function(err) {
   							if (err)
   								throw err;
   							//and begin actually loading the images
-  							getImagesFromSubreddit(subredditName)
+  							getImagesFromSubreddit(subredditName);
+  							
   						});
   					} else {
   						app.io.broadcast('global:status', { message: subredditName + " not a viable reddit "});
@@ -181,7 +198,7 @@ function processQueue() {
 		}).on('error', function(e) {
 		  console.log("HTTPS Load Error: " + e.message);
 		});
-	}
+	});
 	
 }
 
@@ -235,7 +252,7 @@ function getImagesFromSubreddit(subreddit) {
 		couch.get(subreddit,function(err,images,meta) {
 
 			totalImages = images.length;
-			
+			console.log('totalImages: ' + totalImages);
 			images.forEach(function(image,index,array) {
 				//doubhle check for gifs..
 				if (!image.link.match(/\.gif/)) {
